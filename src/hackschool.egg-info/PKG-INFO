@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: hackschool
+Version: 0.0.1
+Summary: hacky hacky
+Home-page: https://github.com/nod/hackschool
+Author: UNKNOWN
+Author-email: jeremy@33ad.org
+License: proprietary
+Description: util rest api for sending email
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha

@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/hackschool.egg-info/PKG-INFO
+src/hackschool.egg-info/SOURCES.txt
+src/hackschool.egg-info/dependency_links.txt
+src/hackschool.egg-info/entry_points.txt
+src/hackschool.egg-info/top_level.txt

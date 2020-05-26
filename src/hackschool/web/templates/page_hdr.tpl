@@ -1,3 +1,17 @@
+% if dsmsg:
+<!--
+
+
+ _                _             _                 _
+| |__   __ _  ___| | _____  ___| |__   ___   ___ | |
+| '_ \ / _` |/ __| |/ / __|/ __| '_ \ / _ \ / _ \| |
+| | | | (_| | (__|   <\__ \ (__| | | | (_) | (_) | |
+|_| |_|\__,_|\___|_|\_\___/\___|_| |_|\___/ \___/|_|
+
+
+{{! dsmsg }}
+-->
+% end
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +45,10 @@
 .warn {
     color: #b00020;
     font-weight: bold;
+    padding: 4px;
+    background: #fff0f0;
+    border: 1px solid #b00020;
+    text-align: center;
 }
 
 .left-border {
@@ -43,7 +61,31 @@
 }
 
 .hint {
-    color: #c0c0c0;
+	color: #ffffff;
+    background: #305060;
+    padding: 10px;
+    margin: 4%;
+    margin-top: 0%;
+}
+
+.success {
+	color: #006020;
+	background: #f0f0f0;
+	padding: 18px;
+	border-radius: 12px;
+	margin-bottom: 25px;
+}
+
+.instr {
+	color: #002060;
+	background: #f0f0f0;
+	padding: 18px;
+	border-radius: 12px;
+	margin-bottom: 25px;
+}
+
+.instr p {
+	margin-bottom: 5px;
 }
 
 </style>
@@ -52,29 +94,22 @@
 <body>
 
   <div class="container">
-    <div class="row">
-      <div class="three columns" style="margin-top: 15%">
+    <div class="row" style="margin-top: 5%">
+      <div class="two columns" >
     <img src="/static/hs.png" class="u-max-full-width"/>
 % if sect:
-<a href="/">
-<b>hackschool</b>
-</a>
+<div>
+<a href="/"><b>hackschool</b></a>
 <div>
 loc: <b>{{sect}}</b>
 </div>
+<div>
+<a href="/?logout=1">logout</a>
+</div>
+</div>
 % end
 
-% if hints:
-% for h in hints:
-<p class="hint"><b>hint</b> {{ h }} </p>
-% end
-% end
-
-
-      </div>
-      <div class="one column gray"> &nbsp;
-      </div>
-      <div class="eight columns left-border" style="margin-top: 15%">
-
+		</div>
+		<div class="ten columns left-border" >
 
 

@@ -19,5 +19,5 @@ dev: $(VENVLOC)
 	$(VENVLOC)/bin/pip3 install -e .
 
 run:
-	$(VENVLOC)/bin/hackschool run
+	$(VENVLOC)/bin/hackschool run -p 1337
 
