@@ -1,42 +1,28 @@
 % include page_hdr.tpl
 
-<!--
- _
-| |__  ___
-| '_ \/ __|
-| | | \__ \
-|_| |_|___/
+%include page_sep.tpl
 
-
-Hello Again AgentH,
-
-Glad to see you're already looking for clues early on.
-
-This one is a bit trickier.  The clues are there, just not as obvious.
-
-An html form is the part of the document that can collect input.
-
-it looks something like:
-
-<form>
-STUFF
-</form>
-
-Look at the html variables defined below and see if anything there sticks out.
-
-Stay Vigilant,
-DeepSleep
--->
-
-<div>
-<h1 class="warn"> ENHANCED RESTRICTED AREA </h1>
-</div>
-<p class="bigger"> Identity Verification Required </p>
 
 %if not ok:
 
+<div class="instr">
+<h4>agent note</h4>
+<p>
+This will require you to verify your identity.  The trick is, you're only going
+to be verifying who they think you are.
+</p>
+<p>
+See if you can find a way to manipulate the system into accepting you.
+</p>
+</div>
+
+<div>
+<h1 > ENHANCED RESTRICTED AREA </h1>
+</div>
+<p class="bigger"> Identity Verification Required </p>
+
 %if tries > 0:
-<h2> INVALID VERIFICATION </h2>
+<h4 class="warn"> INVALID VERIFICATION </h4>
 %end
 
 <form method="GET" action="/h2" >
@@ -61,7 +47,11 @@ DeepSleep
 
 <h2> AUTHORIZATION APPROVED </h2>
 
+<div class="success">
+Yes! Good job AgentH.  Keep going!
+
 <a href="/h3">continue to hack-3</a>
+</div>
 
 %end
 

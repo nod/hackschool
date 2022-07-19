@@ -5,79 +5,27 @@ from bottle import (
         route, run, static_file, template, TEMPLATE_PATH, view, request
         )
 
+from .util import tdict, set_hack_level
+
+from .h1 import h1
+from .h2 import h2
+from .h3 import h3
+
 webproj_root=path.dirname(__file__)
 static_root=path.join(webproj_root, 'static')
 TEMPLATE_PATH.append(path.join(webproj_root, 'templates'))
 
 
-def tdict(**ka):
-    d = dict(
-            title = ka.get('title', 'hackschool'),
-            sect = ka.get('sect', ''),
-            hints = ka.get('hints', ''),
-            )
-    d.update(ka)
-    print("TDICT", d)
-    return d
-
-
 @route('/')
 @view('index.tpl')
 def index():
+    if request.query.logout: set_hack_level(0)
     return tdict()
 
-@route('/h3')
-@view('h3.tpl')
-def h3():
+@route('/denied')
+@view('denied.tpl')
+def denied():
     return tdict()
-
-@route('/h2')
-@view('h2.tpl')
-def h2():
-    if (request.query.verify
-            and request.query.verify == request.query.expectedvalue ):
-        ok=True
-    else:
-        ok=False
-    try:
-        tries = int(request.query.tries) + 1 if request.query.tries else 0
-    except:
-        tries = 5
-    hints = []
-    if tries > 5:
-        hints.append("right click on page and look at the source")
-    return tdict(sect="hack-2", hints=hints, ok=ok, tries=tries)
-
-
-@route('/h1')
-@view('h1.tpl')
-def h1():
-    if request.query.name and request.query.name == request.query.passwd:
-        ok=True
-    else:
-        ok=False
-    try:
-        tries = int(request.query.tries) + 1 if request.query.tries else 0
-    except:
-        tries = 5
-
-    hints = []
-    if tries > 3:
-        hints.append("the user name is on the page somewhere")
-
-    if tries > 10:
-        hints.append("there is stuff hidden in the page itself")
-
-    if tries > 40:
-        hints.append("right click on the page and click View Source")
-
-    return tdict(
-            sect='hack-1',
-            ok=ok,
-            title='username:evil',
-            tries=tries,
-            hints=hints
-            )
 
 @route('/static/<path:path>')
 def callback(path):
